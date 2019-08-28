@@ -1,0 +1,13 @@
+version: "2.1"
+
+services:
+  app:
+    working_dir: /workspace
+    volumes:
+      - .:/workspace
+    command: examples/save-yaml.sh
+    environment:
+      GITLAB_TOKEN: "${GITLAB_TOKEN}"
+      REPO_NAME: "${REPO_NAME}"
+      JOB_NAME: "${JOB_NAME}"
+      FILE_PATH: "${FILE_PATH}"

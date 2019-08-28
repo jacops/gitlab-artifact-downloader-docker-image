@@ -1,0 +1,13 @@
+version: "2.1"
+
+services:
+  app:
+    image: "${DOCKER_HUB:-}${DOCKER_IMAGE:-jacops/gitlab-artifact-downloader}:${DOCKER_IMAGE_TAG:-latest}"
+    build:
+      context: .
+    command: |
+      bin/get-data-providers-file.sh
+        -t ${GITLAB_TOKEN}
+        -r ${REPO_NAME}
+        -j ${JOB_NAME}
+        -f ${FILE_PATH}
